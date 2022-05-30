@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'family'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3307:3307'
+    expose:
+      - '3306'
+
+  familyApp:
+    depends_on:
+      - mysqldb
+    build:
+      context: ./family/
+      dockerfile: Dockerfile
+    image: family-server:latest
+    ports:
+      - '8080:8080'
+#    networks:
+#      -family-familymember-network:
+
+  familyMemberApp:
+    depends_on:
+      - mysqldb
+    build:
+      context: ./familyMembers/
+      dockerfile: Dockerfile
+    image: familymember-server:latest
+    ports:
+      - '8081:8081'
+#    networks:
+#      -family-familymember-network:
+#networks:
+#  -family-familymember-network:
+#    driver: bridge
