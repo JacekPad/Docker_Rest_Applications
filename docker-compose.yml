@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 
 services:
   mysqldb:
@@ -13,11 +13,11 @@ services:
       - ./init/docker-entrypoint-initdb.d
     ports:
       - '3307:3306'
-    expose:
-      - '3307'
 
   familyApp:
     depends_on:
+      - mysqldb
+    links:
       - mysqldb
     build:
       context: ./family/
@@ -25,20 +25,17 @@ services:
     image: family-server:latest
     ports:
       - '8080:8080'
-#    networks:
-#      -family-familymember-network:
+    restart: on-failure
 
-  familyMemberApp:
-    depends_on:
-      - mysqldb
-    build:
-      context: ./familyMembers/
-      dockerfile: Dockerfile
-    image: familymember-server:latest
-    ports:
-      - '8081:8081'
-#    networks:
-#      -family-familymember-network:
-#networks:
-#  -family-familymember-network:
-#    driver: bridge
+#  familyMemberApp:
+#    depends_on:
+#      - mysqldb
+#    links:
+#      - mysqldb
+#    build:
+#      context: ./familyMembers/
+#      dockerfile: Dockerfile
+#    image: familymember-server:latest
+#    ports:
+#      - '8081:8081'
+#    restart: on-failure
