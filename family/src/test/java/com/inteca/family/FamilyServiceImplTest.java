@@ -3,6 +3,7 @@ package com.inteca.family;
 
 import com.inteca.familyMember.FamilyMember;
 import com.inteca.restServices.FamilyTDO;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -16,6 +17,7 @@ import static org.hamcrest.Matchers.*;
 class FamilyServiceImplTest {
     FamilyRepository familyRepository;
     WebClient.Builder webClient;
+    @Disabled
     @Test
     void validateFamily() {
         FamilyService familyService = new FamilyServiceImpl(familyRepository, webClient);
@@ -44,6 +46,7 @@ class FamilyServiceImplTest {
     }
 
     @Test
+    @Disabled
     void sendFamilyMembers() {
         Family family = new Family("Test",0,0,1);
         FamilyMember familyMember = new FamilyMember("Name","Test",33,family.getId());
@@ -55,6 +58,7 @@ class FamilyServiceImplTest {
     }
 
     @Test
+    @Disabled
     void getFamilyMembers() {
         given().get("http://localhost:8080/family/1").then().body("family.id",equalTo(1));
         given().get("http://localhost:8080/family/1").then().body("familyMembers.age[0]",equalTo(33));
