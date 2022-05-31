@@ -13,8 +13,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FamilyTDO {
 
+//An object to store all the information passed in the JSON
+public class FamilyTDO {
     private Family family;
     private List<FamilyMember> familyMembers;
 

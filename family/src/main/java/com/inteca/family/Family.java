@@ -13,7 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Family {
-
+//Entity for the database
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;

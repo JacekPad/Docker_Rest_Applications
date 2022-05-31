@@ -32,7 +32,6 @@ public class FamilyRestController {
         familyRepository.save(family);
         familyService.sendFamilyMembers(familyTDO);
 
-
         Family returnFamily = new Family();
         returnFamily.setId(family.getId());
 

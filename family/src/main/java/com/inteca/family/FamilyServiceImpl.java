@@ -24,6 +24,11 @@ public class FamilyServiceImpl implements FamilyService {
     public boolean validateFamily(FamilyTDO familyTDO) {
         Family family = familyTDO.getFamily();
         List<FamilyMember> familyMembers = familyTDO.getFamilyMembers();
+        int sumOfPeople = family.getNrOfAdults() + family.getNrOfChildren() + family.getNrOfInfants();
+//        Check if number of people is less or more than the number of individuals in the family
+        if (familyMembers.size() != sumOfPeople) {
+            return false;
+        }
 
         int noOfInfants = 0;
         int noOfChildren = 0;
@@ -47,6 +52,7 @@ public class FamilyServiceImpl implements FamilyService {
     public void sendFamilyMembers(FamilyTDO familyTDO) {
         Family family = familyTDO.getFamily();
         Long familyId = familyRepository.findByFamilyName(family.getFamilyName()).getId();
+
         for (FamilyMember familyMember : familyTDO.getFamilyMembers()) {
             familyMember.setFamilyId(familyId);
             webClient.build().post()

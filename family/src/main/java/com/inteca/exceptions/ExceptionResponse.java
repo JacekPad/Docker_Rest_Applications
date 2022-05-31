@@ -1,5 +1,5 @@
 package com.inteca.exceptions;
-
+//Object to send as JSON when exception happens
 public class ExceptionResponse {
     private String error;
     private int status;
