@@ -5,16 +5,17 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_DATABASE: 'family'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
     volumes:
-      - ./init/docker-entrypoint-initdb.d
+      - ./init:/docker-entrypoint-initdb.d
     ports:
       - '3307:3306'
+    networks:
+      - spring-cloud-network
 
-  familyApp:
+  familyapp:
     depends_on:
       - mysqldb
     links:
@@ -25,17 +26,32 @@ services:
     image: family-server:latest
     ports:
       - '8080:8080'
+    expose:
+      - 8080
+    networks:
+      - spring-cloud-network
     restart: on-failure
 
-#  familyMemberApp:
-#    depends_on:
-#      - mysqldb
-#    links:
-#      - mysqldb
-#    build:
-#      context: ./familyMembers/
-#      dockerfile: Dockerfile
-#    image: familymember-server:latest
-#    ports:
-#      - '8081:8081'
-#    restart: on-failure
+  familymemberapp:
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+    build:
+      context: ./familyMembers/
+      dockerfile: Dockerfile
+    image: familymember-server:latest
+    ports:
+      - '8081:8080'
+    restart: on-failure
+    expose:
+      - 8081
+    networks:
+      - spring-cloud-network
+
+volumes:
+  mysqldb:
+    driver: local
+networks:
+  spring-cloud-network:
+    driver: bridge
