@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "5f25e358-4402-4cfb-9b07-75a1afb60ae4",
+		"name": "REST CALLS TESTS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Correct GET method",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/family/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"family",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "No family found GET method",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/family/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"family",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correct POST method",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"family\": {\n        \"familyName\": \"Test1\",\n        \"nrOfInfants\": 1,\n        \"nrOfChildren\": 1,\n        \"nrOfAdults\": 2\n    },\n    \"familyMembers\": [\n        {\n            \"givenName\": \"TestName1\",\n            \"familyName\": \"Test1\",\n            \"age\": 3\n        },\n        {\n            \"givenName\": \"TestName2\",\n            \"familyName\": \"Test1\",\n            \"age\": 11\n        },\n        {\n            \"givenName\": \"TestName3\",\n            \"familyName\": \"Test1\",\n            \"age\": 29\n        },\n        {\n            \"givenName\": \"TestName4\",\n            \"familyName\": \"Test1\",\n            \"age\": 64\n        }\n    ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Not enough people POST method",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"family\": {\n        \"familyName\": \"Test1\",\n        \"nrOfInfants\": 1,\n        \"nrOfChildren\": 1,\n        \"nrOfAdults\": 2\n    },\n    \"familyMembers\": [\n        {\n            \"givenName\": \"TestName1\",\n            \"familyName\": \"Test1\",\n            \"age\": 3\n        },\n                {\n            \"givenName\": \"TestName2\",\n            \"familyName\": \"Test1\",\n            \"age\": 11\n        },\n                {\n            \"givenName\": \"TestName3\",\n            \"familyName\": \"Test1\",\n            \"age\": 29\n        }\n    ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong age POST method",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"family\": {\n        \"familyName\": \"Test1\",\n        \"nrOfInfants\": 1,\n        \"nrOfChildren\": 1,\n        \"nrOfAdults\": 2\n    },\n    \"familyMembers\": [\n        {\n            \"givenName\": \"TestName1\",\n            \"familyName\": \"Test1\",\n            \"age\": 3\n        },\n        {\n            \"givenName\": \"TestName2\",\n            \"familyName\": \"Test1\",\n            \"age\": 11\n        },\n        {\n            \"givenName\": \"TestName3\",\n            \"familyName\": \"Test1\",\n            \"age\": 29\n        },\n        {\n            \"givenName\": \"TestName4\",\n            \"familyName\": \"Test1\",\n            \"age\": 3\n        }\n    ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/create-family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create-family"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
