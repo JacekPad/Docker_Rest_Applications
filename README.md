@@ -16,10 +16,10 @@ To run the program type:
 ```
 docker-compose up --build
 ```
-in the terminal in the project's main folder.
-Database access:
-Login: ```user```
-Password: ```password```
+in the terminal in the project's main folder. <br>
+Database access: <br>
+Login: ```user``` <br>
+Password: ```password``` <br>
 The project also includes Postman collection with different API calls for testing the responses. 
 
 ## Other
