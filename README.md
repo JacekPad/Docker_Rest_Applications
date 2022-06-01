@@ -18,6 +18,8 @@ docker-compose up --build
 ```
 in the project's main folder. Project also includes Postman collection with different API calls for testing the responses. 
 
+## Other
+
 ### Notices
 - The MySQL server within docker container takes a couples of minutes to start, which makes both applications fail to connect. For this reason both applications have a parameter ```reset on failure```. After a couple of minutes the MySQL server comes online and both applications make the connection and start to work properly.
 
