@@ -16,7 +16,8 @@ To run the program type:
 ```
 docker-compose up --build
 ```
-in the terminal in the project's main folder. Project also includes Postman collection with different API calls for testing the responses. 
+in the terminal in the project's main folder.
+Project also includes Postman collection with different API calls for testing the responses. 
 
 ## Other
 
