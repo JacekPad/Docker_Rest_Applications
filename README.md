@@ -8,7 +8,7 @@ Both applications have their own schemas in the same database.
 Applications store and process information about families - the first application stores information about a family as a whole (family's name and number of people at certain age range), the second application stores information about each person's individual data (name, age, family's name).
 The First application validates acquired data (age validation for each member), and then sends relevant data to the second application for storage.
 
-The first application can also access family's member's information stored in the second application to show with the family data.
+The first application can also access family's member's information stored in the second application to show alongside the family data.
 
 ## Instllation
 
