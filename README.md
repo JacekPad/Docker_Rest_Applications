@@ -2,7 +2,7 @@
 Rest applications connected to each other and a database in docker containers.
 
 ## Description
-Two REST applications and MySQL database on three different docker containers in the same network. Two application are connected to each other through REST calls.
+Two REST applications and MySQL database on three different docker containers in the same network. Two applications are connected to each other through REST calls.
 Both applications have their own schemas in the same database.
 
 Applications store and process information about families - the first application stores information about a family as a whole (family's name and number of people at certain age range), the second application stores information about each person's individual data (name, age, family's name).
